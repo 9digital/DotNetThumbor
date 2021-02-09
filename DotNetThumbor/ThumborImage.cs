@@ -149,11 +149,19 @@
         /// will overlay all previous watermarks if there is an overlap.
         /// </summary>
         /// <param name="watermarkImageUrl">URL to the image to use as a watermark. Can be the output of another thumbor image.</param>
-        /// <param name="right">How many pixels right the watermark should be.</param>
-        /// <param name="down">How many pixels down the watermark should be.</param>
+        /// <param name="right">
+        /// How many pixels right the watermark should be. If the value is 'center' (without the single quotes), the watermark will be centered horizontally.
+        /// If the value is 'repeat' (without the single quotes), the watermark will be repeated horizontally.
+        /// If the value is a positive or negative number followed by a 'p' (ex. 20p), it will calculate the value from the image width as percentage.
+        /// </param>
+        /// <param name="down">
+        /// How many pixels down the watermark should be. If the value is 'center' (without the single quotes), the watermark will be centered vertically.
+        /// If the value is 'repeat' (without the single quotes), the watermark will be repeated vertically.
+        /// If the value is a positive or negative number followed by a 'p' (ex. 20p), it will calculate the value from the image height as percentage.
+        /// </param>
         /// <param name="transparency">Watermark image transparency 0 = opaque - 100 fully transparent</param>
         /// <returns>The current thumbor image object.</returns>
-        public ThumborImage Watermark(string watermarkImageUrl, int right, int down, int transparency)
+        public ThumborImage Watermark(string watermarkImageUrl, string right, string down, int transparency)
         {
             this.watermarks.Add(string.Format("watermark({0},{1},{2},{3})", watermarkImageUrl, right, down, transparency));
             return this;
